@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  gin:
+    build: .
+    container_name: api-gin
+    volumes:
+      - ".:/app"
+    ports:
+      - '8000:80'
+    depends_on:
+      - mysql
+    links:
+      - "mysql:db"
+  mysql:
+    image: mysql:latest
+    container_name: db-mysql
+    volumes:
+      - '~/dev/dbs-data/mysql:/var/lib/mysql'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: dbustore
+      MYSQL_USER: dbuser
+      MYSQL_PASSWORD: dbpassword
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: web-phpmyadmin
+    links:
+      - mysql:db
+    ports:
+      - "8081:80"

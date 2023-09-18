@@ -2,14 +2,13 @@ package main
 
 import (
 	"fmt"
-
-	"github.com/risdatamamal/ustore-golang/config"
-	"github.com/risdatamamal/ustore-golang/database"
-	"github.com/risdatamamal/ustore-golang/router"
+	"ustore-golang/config"
+	"ustore-golang/database"
+	"ustore-golang/routes"
 )
 
 func main() {
-	r := router.StartApp()
+	r := routes.StartApp()
 	err := database.StartDB()
 	if err != nil {
 		fmt.Println("Error starting database: ", err)

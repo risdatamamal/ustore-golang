@@ -3,7 +3,7 @@ package config
 var (
 	SERVER_PORT = ":8000"
 
-	HOST     string = "localhost"
+	HOST     string = "mysql"
 	PORT     int    = 3306
 	USERNAME string = "dbuser"
 	PASSWORD string = "dbpassword"
