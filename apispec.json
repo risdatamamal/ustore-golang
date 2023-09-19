@@ -1,0 +1,456 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "UStore RESTful API",
+    "description": "API Spec for UStore RESTful API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8000/v1/api"
+    }
+  ],
+  "paths": {
+    "/login": {
+      "post": {
+        "tags": ["Authentication"],
+        "description": "Get Login Data",
+        "responses": {
+          "200": {
+            "description": "Success Authentication",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "number",
+                          "example": 200
+                        },
+                        "status": {
+                          "type": "string",
+                          "example": "success"
+                        }
+                      }
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "access_token": {
+                          "type": "string",
+                          "example": "308|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+                        },
+                        "token_type": {
+                          "type": "string",
+                          "example": "Bearer"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Email or Password is wrong",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "number",
+                          "example": 404
+                        },
+                        "status": {
+                          "type": "string",
+                          "example": "not found"
+                        }
+                      }
+                    },
+                    "data": {
+                      "type": "string",
+                      "example": "Email or Password is wrong"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/register": {
+      "post": {
+        "tags": ["Authentication"],
+        "description": "Insert Login Data",
+        "responses": {
+          "200": {
+            "description": "Success Authentication",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "number",
+                          "example": 200
+                        },
+                        "status": {
+                          "type": "string",
+                          "example": "success"
+                        }
+                      }
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "access_token": {
+                          "type": "string",
+                          "example": "308|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+                        },
+                        "token_type": {
+                          "type": "string",
+                          "example": "Bearer"
+                        },
+                        "user": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "number",
+                              "example": 1
+                            },
+                            "username": {
+                              "type": "string",
+                              "example": "John Doe"
+                            },
+                            "email": {
+                              "type": "string",
+                              "example": "johndoe@gmail.com"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "You have been registered",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "number",
+                          "example": 404
+                        },
+                        "status": {
+                          "type": "string",
+                          "example": "not found"
+                        }
+                      }
+                    },
+                    "data": {
+                      "type": "string",
+                      "example": "Your account have been registered"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customers": {
+      "get": {
+        "tags": ["Customers"],
+        "description": "List all Customers with Paginate",
+        "responses": {
+          "200": {
+            "description": "Success get all Customers",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "number",
+                          "example": 200
+                        },
+                        "status": {
+                          "type": "string",
+                          "example": "success"
+                        }
+                      }
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "number",
+                            "example": 1
+                          },
+                          "username": {
+                            "type": "string",
+                            "example": "John Doe"
+                          },
+                          "email": {
+                            "type": "string",
+                            "example": "risda123tamam@gmail.com"
+                          }
+                        }
+                      }
+                    },
+                    "current_page": {
+                      "type": "number",
+                      "example": 2
+                    },
+                    "last_page": {
+                      "type": "number",
+                      "example": 5
+                    },
+                    "next_page_url": {
+                      "type": "string",
+                      "example": "http://localhost:8000/v1/api/customers?page=3"
+                    },
+                    "prev_page_url": {
+                      "type": "string",
+                      "example": "http://localhost:8000/v1/api/customers?page=1"
+                    },
+                    "per_page": {
+                      "type": "number",
+                      "example": 10
+                    },
+                    "total": {
+                      "type": "number",
+                      "example": 50
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Failure get all Customers",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "number",
+                          "example": 404
+                        },
+                        "status": {
+                          "type": "string",
+                          "example": "not found"
+                        }
+                      }
+                    },
+                    "data": {
+                      "type": "string",
+                      "example": "Data not found"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Customers"],
+        "description": "Insert Customer Data",
+        "responses": {
+          "200": {
+            "description": "Success Insert Customer Data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "number",
+                          "example": 200
+                        },
+                        "status": {
+                          "type": "string",
+                          "example": "success"
+                        }
+                      }
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number",
+                          "example": 2
+                        },
+                        "username": {
+                          "type": "string",
+                          "example": "John Luck"
+                        },
+                        "email": {
+                          "type": "string",
+                          "example": "johnluck@gmail.com"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Failure Insert Customer Data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "number",
+                          "example": 404
+                        },
+                        "status": {
+                          "type": "string",
+                          "example": "not found"
+                        }
+                      }
+                    },
+                    "data": {
+                      "type": "string",
+                      "example": "Data has been added"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customers/{customerId}": {
+      "get": {
+        "tags": ["Customers"],
+        "description": "Get Detail Customer",
+        "parameters": [
+          {
+            "name": "customerId",
+            "in": "path",
+            "description": "ID of Customer",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success get data Customer",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "number",
+                          "example": 200
+                        },
+                        "status": {
+                          "type": "string",
+                          "example": "success"
+                        }
+                      }
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number",
+                          "example": 1
+                        },
+                        "username": {
+                          "type": "string",
+                          "example": "John Doe"
+                        },
+                        "email": {
+                          "type": "string",
+                          "example": "risda123tamam@gmail.com"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Failure get data Customer",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "number",
+                          "example": 404
+                        },
+                        "status": {
+                          "type": "string",
+                          "example": "not found"
+                        }
+                      }
+                    },
+                    "data": {
+                      "type": "string",
+                      "example": "Data not found"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
