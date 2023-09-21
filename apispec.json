@@ -46,6 +46,26 @@
                         "token_type": {
                           "type": "string",
                           "example": "Bearer"
+                        },
+                        "user_id": {
+                          "type": "number",
+                          "example": 3
+                        },
+                        "username": {
+                          "type": "string",
+                          "example": "John"
+                        },
+                        "email": {
+                          "type": "string",
+                          "example": "johnthor@gmail.com"
+                        },
+                        "full_name": {
+                          "type": "string",
+                          "example": "John Thor"
+                        },
+                        "role": {
+                          "type": "string",
+                          "example": "admin"
                         }
                       }
                     }
@@ -122,22 +142,25 @@
                           "type": "string",
                           "example": "Bearer"
                         },
-                        "user": {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "number",
-                              "example": 1
-                            },
-                            "username": {
-                              "type": "string",
-                              "example": "John Doe"
-                            },
-                            "email": {
-                              "type": "string",
-                              "example": "johndoe@gmail.com"
-                            }
-                          }
+                        "user_id": {
+                          "type": "number",
+                          "example": 1
+                        },
+                        "username": {
+                          "type": "string",
+                          "example": "John"
+                        },
+                        "email": {
+                          "type": "string",
+                          "example": "johndoe@gmail.com"
+                        },
+                        "full_name": {
+                          "type": "string",
+                          "example": "John Doe"
+                        },
+                        "role": {
+                          "type": "string",
+                          "example": "customer"
                         }
                       }
                     }
@@ -214,11 +237,19 @@
                           },
                           "username": {
                             "type": "string",
-                            "example": "John Doe"
+                            "example": "John"
                           },
                           "email": {
                             "type": "string",
-                            "example": "risda123tamam@gmail.com"
+                            "example": "johndoe@gmail.com"
+                          },
+                          "full_name": {
+                            "type": "string",
+                            "example": "John Doe"
+                          },
+                          "role": {
+                            "type": "string",
+                            "example": "customer"
                           }
                         }
                       }
@@ -316,11 +347,19 @@
                         },
                         "username": {
                           "type": "string",
-                          "example": "John Luck"
+                          "example": "John"
                         },
                         "email": {
                           "type": "string",
                           "example": "johnluck@gmail.com"
+                        },
+                        "full_name": {
+                          "type": "string",
+                          "example": "John Luck"
+                        },
+                        "role": {
+                          "type": "string",
+                          "example": "customer"
                         }
                       }
                     }
@@ -407,11 +446,19 @@
                         },
                         "username": {
                           "type": "string",
-                          "example": "John Doe"
+                          "example": "John"
                         },
                         "email": {
                           "type": "string",
-                          "example": "risda123tamam@gmail.com"
+                          "example": "johndoe@gmail.com"
+                        },
+                        "full_name": {
+                          "type": "string",
+                          "example": "John Doe"
+                        },
+                        "role": {
+                          "type": "string",
+                          "example": "customer"
                         }
                       }
                     }
@@ -422,6 +469,634 @@
           },
           "404": {
             "description": "Failure get data Customer",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "number",
+                          "example": 404
+                        },
+                        "status": {
+                          "type": "string",
+                          "example": "not found"
+                        }
+                      }
+                    },
+                    "data": {
+                      "type": "string",
+                      "example": "Data not found"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Customers"],
+        "description": "Update Data Customer",
+        "parameters": [
+          {
+            "name": "customerId",
+            "in": "path",
+            "description": "ID of Customer",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success update data Customer",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "number",
+                          "example": 200
+                        },
+                        "status": {
+                          "type": "string",
+                          "example": "success"
+                        }
+                      }
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number",
+                          "example": 1
+                        },
+                        "username": {
+                          "type": "string",
+                          "example": "John"
+                        },
+                        "email": {
+                          "type": "string",
+                          "example": "johnbull@gmail.com"
+                        },
+                        "full_name": {
+                          "type": "string",
+                          "example": "John Bull"
+                        },
+                        "role": {
+                          "type": "string",
+                          "example": "customer"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Failure update data Customer",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "number",
+                          "example": 404
+                        },
+                        "status": {
+                          "type": "string",
+                          "example": "not found"
+                        }
+                      }
+                    },
+                    "data": {
+                      "type": "string",
+                      "example": "Data not found"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Customers"],
+        "description": "Delete Data Customer",
+        "parameters": [
+          {
+            "name": "customerId",
+            "in": "path",
+            "description": "ID of Customer",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success delete data Customer",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "number",
+                          "example": 200
+                        },
+                        "status": {
+                          "type": "string",
+                          "example": "success"
+                        }
+                      }
+                    },
+                    "data": {
+                      "type": "string",
+                      "example": "Data has been deleted"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Failure delete data Customer",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "number",
+                          "example": 404
+                        },
+                        "status": {
+                          "type": "string",
+                          "example": "not found"
+                        }
+                      }
+                    },
+                    "data": {
+                      "type": "string",
+                      "example": "Data not found"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orders": {
+      "get": {
+        "tags": ["Orders"],
+        "description": "List all Orders with Paginate",
+        "responses": {
+          "200": {
+            "description": "Success get all Orders",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "number",
+                          "example": 200
+                        },
+                        "status": {
+                          "type": "string",
+                          "example": "success"
+                        }
+                      }
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "number",
+                            "example": 1
+                          },
+                          "customer_id": {
+                            "type": "number",
+                            "example": 1
+                          },
+                          "order_date": {
+                            "type": "string",
+                            "example": "10-10-2023"
+                          },
+                          "total_amount": {
+                            "type": "number",
+                            "example": 100000
+                          }
+                        }
+                      }
+                    },
+                    "current_page": {
+                      "type": "number",
+                      "example": 2
+                    },
+                    "last_page": {
+                      "type": "number",
+                      "example": 5
+                    },
+                    "next_page_url": {
+                      "type": "string",
+                      "example": "http://localhost:8000/v1/api/customers?page=3"
+                    },
+                    "prev_page_url": {
+                      "type": "string",
+                      "example": "http://localhost:8000/v1/api/customers?page=1"
+                    },
+                    "per_page": {
+                      "type": "number",
+                      "example": 10
+                    },
+                    "total": {
+                      "type": "number",
+                      "example": 50
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Failure get all Orders",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "number",
+                          "example": 404
+                        },
+                        "status": {
+                          "type": "string",
+                          "example": "not found"
+                        }
+                      }
+                    },
+                    "data": {
+                      "type": "string",
+                      "example": "Data not found"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Orders"],
+        "description": "Insert Order Data",
+        "responses": {
+          "200": {
+            "description": "Success Insert Order Data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "number",
+                          "example": 200
+                        },
+                        "status": {
+                          "type": "string",
+                          "example": "success"
+                        }
+                      }
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number",
+                          "example": 2
+                        },
+                        "customer_id": {
+                          "type": "number",
+                          "example": 1
+                        },
+                        "order_date": {
+                          "type": "string",
+                          "example": "11-10-2023"
+                        },
+                        "total_amount": {
+                          "type": "number",
+                          "example": 110000
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Failure Insert Customer Data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "number",
+                          "example": 404
+                        },
+                        "status": {
+                          "type": "string",
+                          "example": "not found"
+                        }
+                      }
+                    },
+                    "data": {
+                      "type": "string",
+                      "example": "Data has been added"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orders/{orderId}": {
+      "get": {
+        "tags": ["Orders"],
+        "description": "Get Detail Order",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "ID of Order",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success get data Order",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "number",
+                          "example": 200
+                        },
+                        "status": {
+                          "type": "string",
+                          "example": "success"
+                        }
+                      }
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number",
+                          "example": 1
+                        },
+                        "customer_id": {
+                          "type": "number",
+                          "example": 1
+                        },
+                        "order_date": {
+                          "type": "string",
+                          "example": "10-10-2023"
+                        },
+                        "total_amount": {
+                          "type": "number",
+                          "example": 100000
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Failure get data Order",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "number",
+                          "example": 404
+                        },
+                        "status": {
+                          "type": "string",
+                          "example": "not found"
+                        }
+                      }
+                    },
+                    "data": {
+                      "type": "string",
+                      "example": "Data not found"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Orders"],
+        "description": "Update Data Order",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "ID of Order",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success update data Order",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "number",
+                          "example": 200
+                        },
+                        "status": {
+                          "type": "string",
+                          "example": "success"
+                        }
+                      }
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number",
+                          "example": 1
+                        },
+                        "customer_id": {
+                          "type": "number",
+                          "example": 1
+                        },
+                        "order_date": {
+                          "type": "string",
+                          "example": "10-10-2023"
+                        },
+                        "total_amount": {
+                          "type": "number",
+                          "example": 150000
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Failure update data Order",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "number",
+                          "example": 404
+                        },
+                        "status": {
+                          "type": "string",
+                          "example": "not found"
+                        }
+                      }
+                    },
+                    "data": {
+                      "type": "string",
+                      "example": "Data not found"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Orders"],
+        "description": "Delete Data Order",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "ID of Order",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success delete data Order",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "number",
+                          "example": 200
+                        },
+                        "status": {
+                          "type": "string",
+                          "example": "success"
+                        }
+                      }
+                    },
+                    "data": {
+                      "type": "string",
+                      "example": "Data has been deleted"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Failure delete data Order",
             "content": {
               "application/json": {
                 "schema": {
