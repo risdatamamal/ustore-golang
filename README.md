@@ -31,7 +31,16 @@ Berikut adalah ERD dan table database spesifikasi yang digunakan pada RESTful AP
 - **total_amount** (DECIMAL(10, 2), NOT NULL)
   - Jumlah total pesanan.
 
-### Catatan Tambahan:
+## Cara Instalasi (tanpa Docker):
 
-- 
--
+- Clone repository
+- Jalankan perintah `go mod tidy` untuk mendownload semua dependency yang dibutuhkan
+- Buat database dengan nama `dbustore` di MySQL
+- Jalankan perintah `go run main.go` untuk menjalankan server
+- Server akan berjalan di `localhost:8000`
+
+## Cara Instalasi (dengan Docker):
+
+- Clone repository
+- Jalankan perintah `docker-compose up --build` untuk menjalankan server
+- Server akan berjalan di `localhost:8000`
