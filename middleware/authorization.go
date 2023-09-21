@@ -22,40 +22,15 @@ func Authorization(param string) gin.HandlerFunc {
 			return
 		}
 
-		userData := ctx.MustGet("userData").(jwt.MapClaims)
-		userID := int(userData["id"].(float64))
+		customerData := ctx.MustGet("customerData").(jwt.MapClaims)
+		customerID := int(customerData["id"].(float64))
 
-		//TODO: Customer
-		if param == "customerId" {
-			db := database.GetDB()
-			customer := models.Customer{}
-
-			err := db.Select("user_id").First(&customer, id).Error
-
-			if err != nil {
-				ctx.AbortWithStatusJSON(http.StatusNotFound, gin.H{
-					"code":    http.StatusNotFound,
-					"error":   "Not Found",
-					"message": "Data doesn't exist",
-				})
-				return
-			}
-
-			if userID != customer.UserID {
-				ctx.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{
-					"code":    http.StatusUnauthorized,
-					"error":   "Unauthorized",
-					"message": "You are not allowed to access this data",
-				})
-				return
-			}
-
-			//TODO: Order
-		} else if param == "orderId" {
+		//TODO: Order
+		if param == "orderId" {
 			db := database.GetDB()
 			order := models.Order{}
 
-			err := db.Select("user_id").First(&order, id).Error
+			err := db.Select("customer_id").First(&order, id).Error
 
 			if err != nil {
 				ctx.AbortWithStatusJSON(http.StatusNotFound, gin.H{
@@ -66,7 +41,7 @@ func Authorization(param string) gin.HandlerFunc {
 				return
 			}
 
-			if userID != order.UserID {
+			if customerID != order.CustomerID {
 				ctx.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{
 					"code":    http.StatusUnauthorized,
 					"error":   "Unauthorized",
@@ -75,7 +50,7 @@ func Authorization(param string) gin.HandlerFunc {
 				return
 			}
 		} else {
-			if userID != id {
+			if customerID != id {
 				ctx.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{
 					"code":    http.StatusUnauthorized,
 					"error":   "Unauthorized",

@@ -21,7 +21,7 @@ func StartDB() error {
 		return err
 	}
 	fmt.Println("Successfully Connected to Database: ", config.DB_NAME)
-	db.Debug().AutoMigrate(models.User{})
+	db.Debug().AutoMigrate(models.Customer{})
 	return nil
 }
 
