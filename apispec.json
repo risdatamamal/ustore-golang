@@ -39,29 +39,21 @@
                     "data": {
                       "type": "object",
                       "properties": {
-                        "access_token": {
+                        "token": {
                           "type": "string",
-                          "example": "308|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+                          "example": "xxxxxxxxxxxxxxxxxxxxxx"
                         },
-                        "token_type": {
-                          "type": "string",
-                          "example": "Bearer"
-                        },
-                        "user_id": {
+                        "id": {
                           "type": "number",
                           "example": 3
                         },
-                        "username": {
+                        "user_name": {
                           "type": "string",
                           "example": "John"
                         },
                         "email": {
                           "type": "string",
                           "example": "johnthor@gmail.com"
-                        },
-                        "full_name": {
-                          "type": "string",
-                          "example": "John Thor"
                         },
                         "role": {
                           "type": "string",
@@ -81,22 +73,13 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "code": {
-                          "type": "number",
-                          "example": 404
-                        },
-                        "status": {
-                          "type": "string",
-                          "example": "not found"
-                        }
-                      }
+                    "code": {
+                      "type": "number",
+                      "example": 404
                     },
-                    "data": {
+                    "status": {
                       "type": "string",
-                      "example": "Email or Password is wrong"
+                      "example": "not found"
                     }
                   }
                 }
@@ -134,29 +117,25 @@
                     "data": {
                       "type": "object",
                       "properties": {
-                        "access_token": {
+                        "created_date":{
                           "type": "string",
-                          "example": "308|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+                          "example": "2021-10-10 10:10:10"
                         },
-                        "token_type": {
+                        "token": {
                           "type": "string",
-                          "example": "Bearer"
+                          "example": "xxxxxxxxxxxxxxxxxxxx"
                         },
-                        "user_id": {
+                        "id": {
                           "type": "number",
                           "example": 1
                         },
-                        "username": {
+                        "user_name": {
                           "type": "string",
                           "example": "John"
                         },
                         "email": {
                           "type": "string",
                           "example": "johndoe@gmail.com"
-                        },
-                        "full_name": {
-                          "type": "string",
-                          "example": "John Doe"
                         },
                         "role": {
                           "type": "string",
@@ -176,22 +155,13 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "code": {
-                          "type": "number",
-                          "example": 404
-                        },
-                        "status": {
-                          "type": "string",
-                          "example": "not found"
-                        }
-                      }
+                    "code": {
+                      "type": "number",
+                      "example": 404
                     },
-                    "data": {
+                    "status": {
                       "type": "string",
-                      "example": "Your account have been registered"
+                      "example": "not found"
                     }
                   }
                 }
@@ -235,7 +205,7 @@
                             "type": "number",
                             "example": 1
                           },
-                          "username": {
+                          "user_name": {
                             "type": "string",
                             "example": "John"
                           },
@@ -254,23 +224,11 @@
                         }
                       }
                     },
-                    "current_page": {
+                    "page": {
                       "type": "number",
                       "example": 2
                     },
-                    "last_page": {
-                      "type": "number",
-                      "example": 5
-                    },
-                    "next_page_url": {
-                      "type": "string",
-                      "example": "http://localhost:8000/v1/api/customers?page=3"
-                    },
-                    "prev_page_url": {
-                      "type": "string",
-                      "example": "http://localhost:8000/v1/api/customers?page=1"
-                    },
-                    "per_page": {
+                    "limit": {
                       "type": "number",
                       "example": 10
                     },
@@ -290,22 +248,13 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "code": {
-                          "type": "number",
-                          "example": 404
-                        },
-                        "status": {
-                          "type": "string",
-                          "example": "not found"
-                        }
-                      }
+                    "code": {
+                      "type": "number",
+                      "example": 404
                     },
-                    "data": {
+                    "status": {
                       "type": "string",
-                      "example": "Data not found"
+                      "example": "not found"
                     }
                   }
                 }
@@ -345,17 +294,13 @@
                           "type": "number",
                           "example": 2
                         },
-                        "username": {
+                        "user_name": {
                           "type": "string",
                           "example": "John"
                         },
                         "email": {
                           "type": "string",
                           "example": "johnluck@gmail.com"
-                        },
-                        "full_name": {
-                          "type": "string",
-                          "example": "John Luck"
                         },
                         "role": {
                           "type": "string",
@@ -375,22 +320,13 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "code": {
-                          "type": "number",
-                          "example": 404
-                        },
-                        "status": {
-                          "type": "string",
-                          "example": "not found"
-                        }
-                      }
+                    "code": {
+                      "type": "number",
+                      "example": 404
                     },
-                    "data": {
+                    "status": {
                       "type": "string",
-                      "example": "Data has been added"
+                      "example": "not found"
                     }
                   }
                 }
@@ -444,7 +380,7 @@
                           "type": "number",
                           "example": 1
                         },
-                        "username": {
+                        "user_name": {
                           "type": "string",
                           "example": "John"
                         },
@@ -474,22 +410,13 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "code": {
-                          "type": "number",
-                          "example": 404
-                        },
-                        "status": {
-                          "type": "string",
-                          "example": "not found"
-                        }
-                      }
+                    "code": {
+                      "type": "number",
+                      "example": 404
                     },
-                    "data": {
+                    "status": {
                       "type": "string",
-                      "example": "Data not found"
+                      "example": "not found"
                     }
                   }
                 }
@@ -541,7 +468,7 @@
                           "type": "number",
                           "example": 1
                         },
-                        "username": {
+                        "user_name": {
                           "type": "string",
                           "example": "John"
                         },
@@ -571,22 +498,13 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "code": {
-                          "type": "number",
-                          "example": 404
-                        },
-                        "status": {
-                          "type": "string",
-                          "example": "not found"
-                        }
-                      }
+                    "code": {
+                      "type": "number",
+                      "example": 404
                     },
-                    "data": {
+                    "status": {
                       "type": "string",
-                      "example": "Data not found"
+                      "example": "not found"
                     }
                   }
                 }
@@ -631,7 +549,7 @@
                         }
                       }
                     },
-                    "data": {
+                    "message": {
                       "type": "string",
                       "example": "Data has been deleted"
                     }
@@ -647,22 +565,13 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "code": {
-                          "type": "number",
-                          "example": 404
-                        },
-                        "status": {
-                          "type": "string",
-                          "example": "not found"
-                        }
-                      }
+                    "code": {
+                      "type": "number",
+                      "example": 404
                     },
-                    "data": {
+                    "status": {
                       "type": "string",
-                      "example": "Data not found"
+                      "example": "not found"
                     }
                   }
                 }
@@ -721,23 +630,11 @@
                         }
                       }
                     },
-                    "current_page": {
+                    "page": {
                       "type": "number",
                       "example": 2
                     },
-                    "last_page": {
-                      "type": "number",
-                      "example": 5
-                    },
-                    "next_page_url": {
-                      "type": "string",
-                      "example": "http://localhost:8000/v1/api/customers?page=3"
-                    },
-                    "prev_page_url": {
-                      "type": "string",
-                      "example": "http://localhost:8000/v1/api/customers?page=1"
-                    },
-                    "per_page": {
+                    "limit": {
                       "type": "number",
                       "example": 10
                     },
@@ -757,22 +654,13 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "code": {
-                          "type": "number",
-                          "example": 404
-                        },
-                        "status": {
-                          "type": "string",
-                          "example": "not found"
-                        }
-                      }
+                    "code": {
+                      "type": "number",
+                      "example": 404
                     },
-                    "data": {
+                    "status": {
                       "type": "string",
-                      "example": "Data not found"
+                      "example": "not found"
                     }
                   }
                 }
@@ -838,22 +726,13 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "code": {
-                          "type": "number",
-                          "example": 404
-                        },
-                        "status": {
-                          "type": "string",
-                          "example": "not found"
-                        }
-                      }
+                    "code": {
+                      "type": "number",
+                      "example": 404
                     },
-                    "data": {
+                    "status": {
                       "type": "string",
-                      "example": "Data has been added"
+                      "example": "not found"
                     }
                   }
                 }
@@ -933,22 +812,13 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "code": {
-                          "type": "number",
-                          "example": 404
-                        },
-                        "status": {
-                          "type": "string",
-                          "example": "not found"
-                        }
-                      }
+                    "code": {
+                      "type": "number",
+                      "example": 404
                     },
-                    "data": {
+                    "status": {
                       "type": "string",
-                      "example": "Data not found"
+                      "example": "not found"
                     }
                   }
                 }
@@ -1026,22 +896,13 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "code": {
-                          "type": "number",
-                          "example": 404
-                        },
-                        "status": {
-                          "type": "string",
-                          "example": "not found"
-                        }
-                      }
+                    "code": {
+                      "type": "number",
+                      "example": 404
                     },
-                    "data": {
+                    "status": {
                       "type": "string",
-                      "example": "Data not found"
+                      "example": "not found"
                     }
                   }
                 }
@@ -1086,7 +947,7 @@
                         }
                       }
                     },
-                    "data": {
+                    "message": {
                       "type": "string",
                       "example": "Data has been deleted"
                     }
@@ -1102,22 +963,13 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "code": {
-                          "type": "number",
-                          "example": 404
-                        },
-                        "status": {
-                          "type": "string",
-                          "example": "not found"
-                        }
-                      }
+                    "code": {
+                      "type": "number",
+                      "example": 404
                     },
-                    "data": {
+                    "status": {
                       "type": "string",
-                      "example": "Data not found"
+                      "example": "not found"
                     }
                   }
                 }
