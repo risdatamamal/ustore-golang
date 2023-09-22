@@ -15,11 +15,15 @@ var (
 )
 
 func StartDB() error {
-	conn := fmt.Sprintf("host=%s  user=%s password=%s dbname=%s port=%d sslmode=disable", config.HOST, config.USERNAME, config.PASSWORD, config.DB_NAME, config.PORT)
+	conn := fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8&parseTime=True&loc=Local", config.USERNAME, config.PASSWORD, config.HOST, config.DB_NAME)
+	//TODO Migration command: migrate -database "mysql://root@tcp(localhost:3306)/dbustore" -path db/migrations up
+	fmt.Println(conn)
 	db, err = gorm.Open(mysql.Open(conn), &gorm.Config{})
+
 	if err != nil {
 		return err
 	}
+
 	fmt.Println("Successfully Connected to Database: ", config.DB_NAME)
 	db.Debug().AutoMigrate(models.Customer{})
 	return nil

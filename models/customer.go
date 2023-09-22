@@ -13,7 +13,7 @@ type Customer struct {
 	Password string `gorm:"not null" json:"password" form:"password" valid:"required~Password is required,minstringlength(8)" `
 	Email    string `gorm:"not null;uniqueIndex" json:"email" form:"email" valid:"required~Email is required,email~Invalid email address"`
 	FullName string `gorm:"null" json:"full_name" form:"full_name"`
-	Role     string `gorm:"not null" json:"role" form:"role" valid:"required~Role is required"`
+	Role     string `gorm:"not null" json:"role" form:"role" valid:"in(admin|customer)~Role must be admin or customer,default(customer)"`
 }
 
 type GetAllCustomersResponse struct {
@@ -21,7 +21,7 @@ type GetAllCustomersResponse struct {
 	UserName string `gorm:"not null;uniqueIndex" json:"user_name" form:"user_name" valid:"required~User name is required"`
 	Email    string `gorm:"not null;uniqueIndex" json:"email" form:"email" valid:"required~Email is required,email~Invalid email address"`
 	FullName string `gorm:"null" json:"full_name" form:"full_name"`
-	Role     string `gorm:"not null" json:"role" form:"role" valid:"required~Role is required"`
+	Role     string `gorm:"not null" json:"role" form:"role" valid:"in(admin|customer)~Role must be admin or customer"`
 }
 
 func (c *Customer) BeforeCreate(tx *gorm.DB) error {

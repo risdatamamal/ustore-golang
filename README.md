@@ -36,6 +36,7 @@ Berikut adalah ERD dan table database spesifikasi yang digunakan pada RESTful AP
 - Clone repository
 - Jalankan perintah `go mod tidy` untuk mendownload semua dependency yang dibutuhkan
 - Buat database dengan nama `dbustore` di MySQL
+- Jalankan perintah `go run main.go migrate` untuk membuat tabel-tabel yang dibutuhkan
 - Jalankan perintah `go run main.go` untuk menjalankan server
 - Server akan berjalan di `localhost:8000`
 
